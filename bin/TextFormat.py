@@ -1,3 +1,4 @@
+#!/usr/bin/python
 
 import subprocess
 
@@ -14,3 +15,6 @@ class TextFormatter:
                       stdin=subprocess.PIPE,
                       stdout=subprocess.PIPE).communicate(input=html_source)
 
+if __name__ == "__main__":
+    test = TextFormatter()
+    print test.html2text("<html><body><p>This is a test.</p><p>You should have a 303 with you.</p></body></html>")[0]
