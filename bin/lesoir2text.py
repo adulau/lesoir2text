@@ -18,7 +18,27 @@
 #
 # To use it : python lesoir2text.py >lesoir-`date +%Y%m%M`.txt
 
-from lxml import etree
+try:
+  from lxml import etree
+except ImportError:
+  try:
+    # Python 2.5
+    import xml.etree.cElementTree as etree
+  except ImportError:
+    try:
+      # Python 2.5
+      import xml.etree.ElementTree as etree
+    except ImportError:
+      try:
+        # normal cElementTree install
+        import cElementTree as etree
+      except ImportError:
+        try:
+          # normal ElementTree install
+          import elementtree.ElementTree as etree
+        except ImportError:
+          print("Failed to import ElementTree from any known place")
+
 import urllib2
 import os.path
 from urlparse import urlparse
@@ -33,7 +53,7 @@ toplesoir = "http://www.lesoir.be/sitemap-mostread.xml"
 
 sock = urllib2.urlopen(toplesoir)
 
-etree.set_default_parser(etree.XMLParser(dtd_validation=False, load_dtd=False, no_network=False))
+#etree.set_default_parser(etree.XMLParser(dtd_validation=False, load_dtd=False, no_network=False))
 tree = etree.parse(sock)
 
 def FetchPage (url=None):
