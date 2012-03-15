@@ -3,7 +3,7 @@
 import subprocess
 
 class TextFormatter:
-    def __init__(self,lynx='/usr/bin/lynx'):
+    def __init__(self,lynx='lynx'):
         self.lynx = lynx
 
     def html2text(self, html_source):
