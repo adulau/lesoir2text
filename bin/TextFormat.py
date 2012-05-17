@@ -11,7 +11,9 @@ class TextFormatter:
         return subprocess.Popen([self.lynx,
                       '-dump',
                       '-stdin',
-                      '-nolist'],
+                      '-nolist',
+                      '-display_charset=utf-8',
+                      '-assume_charset=iso8859-1'],
                       stdin=subprocess.PIPE,
                       stdout=subprocess.PIPE).communicate(input=html_source)
 
