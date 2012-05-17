@@ -67,7 +67,7 @@ def RemoveJunk (page=None):
     toggleview = False
     toprint = []
     for line in page.split('\n'):
-        if re.search (" Tweet", line):
+        if re.search (" Tweet", line) or re.search (" \+ nous",line):
              toggleview = not toggleview
         if toggleview is True:
              toprint.append(line)
